@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Almostengr.FalconPiPlayer.ApiClient", "Almostengr.FalconPiPlayer.ApiClient\Almostengr.FalconPiPlayer.ApiClient.csproj", "{8628032A-80DA-41E1-8E2F-07A1479CA4C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Almostengr.FalconPiPlayer.ApiClient.Worker", "Almostengr.FalconPiPlayer.ApiClient.Worker\Almostengr.FalconPiPlayer.ApiClient.Worker.csproj", "{1CA79646-BA13-4DC1-93AB-28F0FB016737}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Almostengr.FalconPiPlayer.ApiClient.IntegrationTests", "Almostengr.FalconPiPlayer.ApiClient.IntegrationTests\Almostengr.FalconPiPlayer.ApiClient.IntegrationTests.csproj", "{3D2495CA-53AA-4B4F-9187-B6D1A643233F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,18 +29,18 @@ Global
 		{8628032A-80DA-41E1-8E2F-07A1479CA4C6}.Release|x64.Build.0 = Release|Any CPU
 		{8628032A-80DA-41E1-8E2F-07A1479CA4C6}.Release|x86.ActiveCfg = Release|Any CPU
 		{8628032A-80DA-41E1-8E2F-07A1479CA4C6}.Release|x86.Build.0 = Release|Any CPU
-		{1CA79646-BA13-4DC1-93AB-28F0FB016737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CA79646-BA13-4DC1-93AB-28F0FB016737}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CA79646-BA13-4DC1-93AB-28F0FB016737}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{1CA79646-BA13-4DC1-93AB-28F0FB016737}.Debug|x64.Build.0 = Debug|Any CPU
-		{1CA79646-BA13-4DC1-93AB-28F0FB016737}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1CA79646-BA13-4DC1-93AB-28F0FB016737}.Debug|x86.Build.0 = Debug|Any CPU
-		{1CA79646-BA13-4DC1-93AB-28F0FB016737}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CA79646-BA13-4DC1-93AB-28F0FB016737}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1CA79646-BA13-4DC1-93AB-28F0FB016737}.Release|x64.ActiveCfg = Release|Any CPU
-		{1CA79646-BA13-4DC1-93AB-28F0FB016737}.Release|x64.Build.0 = Release|Any CPU
-		{1CA79646-BA13-4DC1-93AB-28F0FB016737}.Release|x86.ActiveCfg = Release|Any CPU
-		{1CA79646-BA13-4DC1-93AB-28F0FB016737}.Release|x86.Build.0 = Release|Any CPU
+		{3D2495CA-53AA-4B4F-9187-B6D1A643233F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D2495CA-53AA-4B4F-9187-B6D1A643233F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D2495CA-53AA-4B4F-9187-B6D1A643233F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3D2495CA-53AA-4B4F-9187-B6D1A643233F}.Debug|x64.Build.0 = Debug|Any CPU
+		{3D2495CA-53AA-4B4F-9187-B6D1A643233F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3D2495CA-53AA-4B4F-9187-B6D1A643233F}.Debug|x86.Build.0 = Debug|Any CPU
+		{3D2495CA-53AA-4B4F-9187-B6D1A643233F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D2495CA-53AA-4B4F-9187-B6D1A643233F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D2495CA-53AA-4B4F-9187-B6D1A643233F}.Release|x64.ActiveCfg = Release|Any CPU
+		{3D2495CA-53AA-4B4F-9187-B6D1A643233F}.Release|x64.Build.0 = Release|Any CPU
+		{3D2495CA-53AA-4B4F-9187-B6D1A643233F}.Release|x86.ActiveCfg = Release|Any CPU
+		{3D2495CA-53AA-4B4F-9187-B6D1A643233F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

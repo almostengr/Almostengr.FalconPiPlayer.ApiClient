@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Almostengr.FalconPiPlayer.ApiClient.Worker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0514cba54ae1fc293aa8761dd06a95348832e30")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6c69b15bbce79d55e6394b0c4296daf2a9537ae")]
 [assembly: System.Reflection.AssemblyProductAttribute("Almostengr.FalconPiPlayer.ApiClient.Worker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Almostengr.FalconPiPlayer.ApiClient.Worker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

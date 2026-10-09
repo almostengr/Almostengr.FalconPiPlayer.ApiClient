@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <PackageId>Almostengr.FalconPiPlayer.ApiClient</PackageId>
@@ -11,16 +11,16 @@
     <Authors>Kenny Robinson</Authors>
     <AssemblyName>Almostengr.FalconPiPlayer.ApiClient</AssemblyName>
     <RootNamespace>Almostengr.FalconPiPlayer.ApiClient</RootNamespace>
-    <Version>9.$([System.DateTime]::UtcNow.ToString(yyyy.MM.ddHH))</Version>
+    <Version>10.$([System.DateTime]::UtcNow.ToString(yyyy.MM.ddHH))</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/almostengr/falcon-pi-player-apiclient.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Almostengr.Common" Version="9.2025.10.912" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.5" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.3" />
+    <PackageReference Include="Almostengr.Common" Version="10.2026.718.2325" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.12" />
     <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
