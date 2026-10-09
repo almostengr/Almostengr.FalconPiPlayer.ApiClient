@@ -20,7 +20,7 @@ public static class FalconPiPlayerApiClientExtensions
     public static void AddFalconPiPlayerApiClientServices(this IServiceCollection services, IConfigurationManager configuration)
     {
         services.AddHttpClient();
-        // +            services.Configure<FppApiClientSettings>()(nameof(FppApiClientSettings))
+        services.Configure<FppApiClientSettings>(configuration.GetSection(nameof(FppApiClientSettings)));
         services.AddTransient<ICommandClient, CommandClient>();
         services.AddTransient<IFppdClient, FppdClient>();
         services.AddTransient<IMediaClient, MediaClient>();
