@@ -24,4 +24,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Almostengr.LightShow.Agent\Almostengr.LightShow.Agent.csproj" />
+  </ItemGroup>
+
 </Project>
