@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Almostengr.LightShow.Common\Almostengr.LightShow.Common.csproj" />
     <ProjectReference Include="..\Almostengr.FalconPiPlayer.ApiClient\Almostengr.FalconPiPlayer.ApiClient.csproj" />
+    <ProjectReference Include="..\Almostengr.LightShow.Web.ApiClient\Almostengr.LightShow.Web.ApiClient.csproj" />
   </ItemGroup>
 
 </Project>

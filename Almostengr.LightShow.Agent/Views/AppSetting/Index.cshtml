@@ -1,0 +1,27 @@
+@using Almostengr.Common.Common.Shared
+@using Almostengr.LightShow.Agent.Services.AppSettingsManager
+@model AppSettingsResource
+
+<h1>Configuration</h1>
+<div class="mt-3">
+    <div class="mb-3">
+        <div>Player URL</div>
+        <div>@Model.PlayerUrl</div>
+    </div>
+    <div class="mb-3">
+        <div>Player Type</div>
+        <div>@Model.TypeOption.ToDescription()</div>
+    </div>
+    <div class="mb-3">
+        <div>Website URL</div>
+        <div>@Model.WebsiteUrl</div>
+    </div>
+    <div class="mb-3">
+        <div>Website API Key</div>
+        <div>@Model.WebsiteApiKey</div>
+    </div>
+    <div class="mb-3">
+        <div>Sleep Interval</div>
+        <div>@Model.WorkerSleepInterval</div>
+    </div>
+</div>

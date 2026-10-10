@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Almostengr.LightShow.Agent\Almostengr.LightShow.Agent.csproj" />
+    <ProjectReference Include="..\Almostengr.LightShow.Web.ApiClient\Almostengr.LightShow.Web.ApiClient.csproj" />
   </ItemGroup>
 
 </Project>

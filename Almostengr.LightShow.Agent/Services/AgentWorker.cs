@@ -1,57 +1,116 @@
-using Almostengr.LightShow.Agent.Models.Entities;
-using Almostengr.LightShow.Agent.Services.Profiles;
-using Almostengr.LightShow.Agent.Services.Profiles.Domain;
+using Almostengr.Common.Common.DomainServices.Results;
+using Almostengr.FalconPiPlayer.ApiClient.Fppd.DomainServices.Interfaces;
+using Almostengr.FalconPiPlayer.ApiClient.Fppd.DomainServices.Resources;
+using Almostengr.LightShow.Agent.Services.AppSettingsManager.Domain;
+using Almostengr.LightShow.Agent.Services.CurrentStatusManager.Domain;
+using Almostengr.LightShow.Common;
+using Almostengr.LightShow.Web.ApiClient;
+using Microsoft.Extensions.Options;
 
 namespace Almostengr.LightShow.Agent.Services;
 
 public sealed class AgentWorker : BackgroundService
 {
-    private readonly IServiceScopeFactory _serviceScopeFactory;
+    private readonly IFppdClient _fppdClient;
+    private readonly ILogger<AgentWorker> _logger;
+    private readonly IStatusHistoryClient _statusHistoryClient;
+    private AppSettings.AgentSettings _agentSettings;
+    private StatusHistoryResource _lastResource = null;
 
     public AgentWorker(
-        HttpClient httpClient,
-        IServiceScopeFactory serviceScopeFactory
+        IFppdClient fppdClient,
+        IStatusHistoryClient statusHistoryClient,
+        ILogger<AgentWorker> logger,
+        IOptionsMonitor<AppSettings.AgentSettings> options
     )
     {
-        _serviceScopeFactory = serviceScopeFactory;
+        _fppdClient = fppdClient;
+        _logger = logger;
+        options.OnChange(agentsettings =>
+        {
+            _agentSettings = agentsettings;
+        });
+        _statusHistoryClient = statusHistoryClient;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        string lastSequence = string.Empty;
-
         while (!stoppingToken.IsCancellationRequested)
         {
-            var profile = await GetActiveProfileAsync();
-            if (profile == null)
+            if (!RunMode.IsOnline)
             {
-                await Task.Delay(TimeSpan.FromSeconds(15), stoppingToken);
+                await DelayAsync(stoppingToken);
                 continue;
             }
 
-            if (!StatusHistory.IsOnline)
+            try
             {
-                await Task.Delay(TimeSpan.FromSeconds(profile.WorkerSleepInterval), stoppingToken);
-                continue;
+                FppdStatusResource fppStatus = await _fppdClient.GetStatusAsync();
+
+                if (fppStatus == null)
+                {
+                    await DelayAsync(stoppingToken);
+                    continue;
+                }
+
+                var currentResource = AssignToResource(fppStatus);
+                if (_lastResource == currentResource)
+                {
+                    await DelayAsync(stoppingToken);
+                    continue;
+                }
+
+                var statusResult = await _statusHistoryClient.CreateAsync(currentResource);
+                if (statusResult.Failed)
+                {
+                    _logger.LogWarning(statusResult.ToErrorString());
+                }
+
+                var requestResult = await GetNextRequestAsync();
+                if (requestResult.Failed)
+                {
+                    _logger.LogWarning(requestResult.ToErrorString());
+                }
+
+                _lastResource = currentResource;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
             }
 
-            // get latest fpp status 
-
-            // if last sequence / song is not the same
-
-
-            await Task.Delay(TimeSpan.FromSeconds(profile.WorkerSleepInterval), stoppingToken);
+            await DelayAsync(stoppingToken);
         }
     }
 
-    private async Task<Profile> GetActiveProfileAsync()
+    private async Task<Result<int>> GetNextRequestAsync()
     {
-        using var scope = _serviceScopeFactory.CreateScope();
+        if (!RunMode.AllowRequests)
+        {
+            return Result<int>.Failure(string.Empty);
+        }
 
-        var queryService = scope.ServiceProvider
-            .GetRequiredService<IQueryProfileService>();
+        throw new NotImplementedException();
+    }
 
-        var profile = await queryService.GetActiveAsync();
-        return profile;
+    private static StatusHistoryResource AssignToResource(FppdStatusResource statusResource)
+    {
+        if (statusResource == null)
+        {
+            return null;
+        }
+
+        return new StatusHistoryResource
+        {
+            CurrentSequence = statusResource.CurrentSequence,
+            CurrentSong = statusResource.CurrentSong,
+            AllowRequests = RunMode.AllowRequests,
+            IsOnline = RunMode.IsOnline,
+        };
+    }
+
+    private async Task DelayAsync(CancellationToken cancellationToken)
+    {
+        await Task.Delay(TimeSpan.FromSeconds(_agentSettings.WorkerSleepInterval), cancellationToken);
     }
 }
